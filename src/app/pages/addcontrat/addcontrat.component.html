@@ -1,0 +1,78 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">contrat d'investissement</h3>
+            </div>
+
+            <div class="col-4 text-right">
+              <a type="submit" class="btn btn-sm btn-primary">ajouter</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form
+            name="form"
+            (ngSubmit)="ajouterprojet()"
+            #f="ngForm"
+            novalidate>
+            <h6 class="heading-small text-muted mb-4">projet information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="titre">titre</label>
+                    <input id="titre" class="form-control"
+                           required
+                           minlength="3"
+                           maxlength="20"
+                           #nomprojet="ngModel" type="text" name="nom" ngModel [(ngModel)]="titre">                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="description">description</label>
+                    <input id="description" class="form-control"
+                           required
+                           minlength="3"
+                           maxlength="20"
+                           #descriptionprojet="ngModel" type="text" name="description" ngModel [(ngModel)]="description">                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="montant">montant</label>
+                    <input id="montant" class="form-control"  required type="number" name="montant" #montant_debutP="ngModel" ngModel [(ngModel)]="montant">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+
+            <label class="control-label"> signature investisseur</label>
+
+            <label class="btn btn-default">
+              <input type="file" (change)="selectFile($event)">
+            </label>
+            <br>
+
+            <div class="box-footer">
+              <button type="submit" class="btn btn-success">ajouter</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

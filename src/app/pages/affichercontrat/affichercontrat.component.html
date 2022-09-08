@@ -1,0 +1,140 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 300px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+
+</div>
+<div class="container-fluid mt--7">
+<div class="col-xl-8 order-xl-1" >
+  <div class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-8">
+          <h3 class="mb-0">Contrat</h3>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body" >
+      <form *ngFor="let c of contrat">
+        <div class="form-group">
+          <h6 class="heading-small text-muted mb-4">projet information</h6>
+
+          <label class="form-control-label" for="input-">nom du projet</label>
+          <input readonly type="text" id="input-" class="form-control form-control-alternative" placeholder="Username" value="{{c.projet.nom}}">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" >description du projet</label>
+          <textarea readonly rows="4" class="form-control form-control-alternative" placeholder="A few words about your contrat ...">{{c.projet.description}}</textarea>
+        </div>
+        <h6 class="heading-small text-muted mb-4">users information</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-username">investisseur</label>
+                <input readonly type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{c.user.username}}">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Email address</label>
+                <input readonly type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email address" value="{{c.user.email}}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-first-name">Entrepreneur</label>
+                <input readonly type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Entrepreneur" value="{{c.projet.user.username}}">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Email address</label>
+                <input  readonly type="email" id="input" class="form-control form-control-alternative" value="{{c.projet.user.email}}" placeholder="Email address">
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <!-- Address -->
+        <h6 class="heading-small text-muted mb-4">Contact information</h6>
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="form-control-label" for="input-address">Titre</label>
+                <input readonly id="input-address" class="form-control form-control-alternative" placeholder="Titre" value="{{c.titre}}" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="input-city">montant</label>
+                <input readonly type="text" id="input-city" class="form-control form-control-alternative" placeholder="montant" value="{{c.montant}}">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="input-country">signature investisseur</label>
+                <img id="input-country" src="http://localhost:8085/files/{{c.singature_investisseur}}"   style="width:150px;height:150px" class="img-fluid" alt="" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="input-conty">signature entrepreneur</label>
+                <input readonly type="text" id="input-conty" class="form-control form-control-alternative"  value="{{c.signature_entrepreneur}}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <!-- Description -->
+        <h6 class="heading-small text-muted mb-4">Description</h6>
+        <div class="pl-lg-4">
+          <div class="form-group">
+            <label>contrat description</label>
+            <textarea readonly rows="4" class="form-control form-control-alternative" placeholder="A few words about your contrat ...">{{c.description}}</textarea>
+          </div>
+        </div>
+        <br><br><br><br>
+        <form
+          name="form"
+          (ngSubmit)="approuvercontrat(c.id_contrat,c.user.id,c.projet.id_Projet)"
+          #f="ngForm"
+          novalidate>
+        <div style="text-align: center">
+
+          <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="approuver contrat"></p-button>
+          <p-dialog header="confirmation finale" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            <hr class="my-4" />
+
+            <label class="control-label"> signature investisseur</label>
+
+            <label class="btn btn-default">
+              <input type="file" (change)="selectFile($event)">
+            </label>
+            <br><br><br><br><br>
+
+            vous voulez confirmer votre contrat avec une signature ?
+            <ng-template pTemplate="footer">
+              <div class="box-footer">
+              </div>
+              <button icon="pi pi-check" type="submit" class="btn btn-success">oui</button>
+
+              <p-button icon="pi pi-times" (click)="displayBasic=false" label="non"></p-button>
+            </ng-template>
+          </p-dialog>
+
+        </div>
+        <br><br><br>
+<p-divider></p-divider>
+      </form>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

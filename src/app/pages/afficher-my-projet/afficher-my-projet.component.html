@@ -1,0 +1,72 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+  <!-- Table -->
+  <p-card class="card" >
+    <p-dataView #dv [value]="projets" [paginator]="true" [rows]="9" filterBy="nom"
+                [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+      <ng-template pTemplate="header">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+          <p-dropdown [options]="sortOptions" [(ngModel)]="montant_debut" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+          <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by name" (input)="dv.filter($event.target.value)">
+              </span>
+          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
+      </ng-template>
+
+      <ng-template let-projet  pTemplate="listItem" >
+        <div class="p-col-12">
+          <div class="product-list-item">
+            <div class="product-list-detail">
+              <img src="http://localhost:8085/files/{{projet.image}}"  style="width:500px;height:400px" class="img-fluid" alt="" />
+
+              <div class="product-name">nom du projet {{projet.nom}}</div>
+              <div class="product-description">description du projet {{projet.predescription}}</div>
+              <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{projet.categories}}</span>
+            </div>
+            <div class="product-list-action">
+              <span class="product-price">le montant doit etre entre {{projet.montant_debut}} et {{projet.montant_fin}}  </span>
+              <a class="btn btn-sm btn-primary"   (click)="onlistpropo(projet)">investissement</a>
+              <a class="btn btn-sm btn-primary"  (click)="redirectioncontrat(projet)">contrat</a>
+
+
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template let-projet pTemplate="gridItem">
+        <div class="w-20rem ">
+          <div class="product-grid-item card">
+            <div class="product-grid-item-top">
+              <div>
+                <i class="pi pi-tag product-category-icon"></i>
+                <span class="product-category">{{projet.categories}}</span>
+              </div>
+            </div>
+            <div class="product-grid-item-content">
+              <img src="http://localhost:8085/files/{{projet.image}}"   style="width:150px;height:150px" class="img-fluid" alt="" />
+              <div class="product-name">{{projet.nom}}</div>
+              <div class="product-description">{{projet.description}}</div>
+            </div>
+            <div class="product-grid-item-bottom">
+              <i class="fas fa-arrow-up text-success mr-3"></i>{{projet.montant_fin}}
+
+              <a  (click)="onlistpropo(projet)" class="btn btn-sm btn-primary" >investissement </a>
+              <a class="btn btn-sm btn-primary"  (click)="redirectioncontrat(projet)">contrat</a>
+
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </p-card>
+
+  <!-- Dark table -->
+
+</div>

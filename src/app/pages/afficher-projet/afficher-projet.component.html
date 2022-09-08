@@ -1,0 +1,85 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+  <!-- Table -->
+  <p-card class="card" >
+    <p-dataView #dv [value]="projets" [paginator]="true" [rows]="9" filterBy="nom"
+                [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+
+      <ng-template pTemplate="header">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+          <p-dropdown [options]="sortOptions" [(ngModel)]="montant_debut" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+          <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by name" (input)="dv.filter($event.target.value)">
+              </span>
+
+          <p-dropdown [options]="categories" (onChange)="dv.filter($event.valueOf(),'equals')" styleClass="p-column-filter" placeholder="Select a categorie" [showClear]="true">
+            <ng-template let-option pTemplate="item">
+              <span [class]="'customer-badge status-' + option.value">&#123;&#123;option.label&#125;&#125;</span>
+            </ng-template
+            >
+          </p-dropdown>
+          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
+      </ng-template>
+
+      <ng-template let-projet  pTemplate="listItem" >
+        <div class="p-col-12">
+          <div class="product-list-item">
+            <div class="product-list-detail">
+              <img src="http://localhost:8085/files/{{projet.image}}"  style="width:350px;height:250px" class="img-fluid" alt="" />
+
+              <div class="product-name">{{projet.nom}}</div>
+              <div class="product-description">{{projet.predescription}}</div>
+              <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{projet.categories}}</span>
+            </div>
+            <div class="product-list-action">
+              <span class="product-price">max {{projet.montant_debut}}dt min {{projet.montant_fin}} dt </span>
+              <a  (click)="onlistpropo(projet)" class="btn btn-sm btn-primary" >investissement </a>
+
+              <a  (click)="myproposition(projet)" class="btn btn-sm btn-info mr-4" >mes investissement </a>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template  let-projet pTemplate="gridItem">
+        <div class=" w-20rem" >
+          <div class="product-grid-item card">
+            <div class="product-grid-item-top">
+              <div>
+                <i class="pi pi-tag product-category-icon"></i>
+                <span class="product-category">{{projet.categories}}</span>
+              </div>
+            </div>
+            <div class="product-grid-item-content">
+              <img src="http://localhost:8085/files/{{projet.image}}"  style="width:150px;height:150px" class="img-fluid" alt="" />
+              <div class="product-name">{{projet.nom}}</div>
+              <div class="product-description">{{projet.description}}</div>
+            </div>
+            <div class="product-grid-item-bottom">
+              <i class="fas fa-arrow-up text-success mr-3"></i>{{projet.montant_fin}}{{projet.montant_debut}}  <i class="fas fa-arrow-down text-warning mr-3"></i> {{projet.montant_fin}}
+
+
+            </div>
+            <div>
+              <a  (click)="onlistpropo(projet)" class="btn btn-sm btn-primary" >investissement </a>
+              <a  class="btn btn-sm btn-default " (click)="ajouterpropositionredirection(projet)">like  </a>
+
+              <a  (click)="myproposition(projet)" class="btn btn-sm btn-info mr-4" >mes investissement </a>
+
+            </div>
+          </div>
+
+        </div>
+      </ng-template>
+    </p-dataView>
+  </p-card>
+
+  <!-- Dark table -->
+
+</div>
