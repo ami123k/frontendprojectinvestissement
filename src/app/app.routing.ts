@@ -22,6 +22,7 @@ import {AffichercontratComponent} from './pages/affichercontrat/affichercontrat.
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
+import {InvestirbuttonComponent} from './pages/investirbutton/investirbutton.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,9 @@ const routes: Routes = [
       {path: 'afficherpropositionconfirme', component: AfficherpropositionconfirmeComponent},
       {path: 'afficherpropositionpreconfirme', component: AfficherpropositionpreconfirmeComponent},
       {path: 'addcontrat/:id', component: AddcontratComponent},
-      {path: 'affichercontrat/:id', component: AffichercontratComponent}
+      {path: 'affichercontrat/:id', component: AffichercontratComponent},
+      {path: 'investir', component: InvestirbuttonComponent}
+
     ]
   }
   ];

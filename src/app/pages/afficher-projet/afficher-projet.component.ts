@@ -88,11 +88,7 @@ export class AfficherProjetComponent implements OnInit {
     this.router.navigateByUrl('onlistpropo/' + btoa(s.id_Projet));
   }
 
-  testinvestissement(id_projet) {
 
-    // tslint:disable-next-line:max-line-length
-     this.propositionservice.finduserproposerprojet(id_projet, this.tS.getUser().id).subscribe(e => {  console.log(e); this.hidden = e ; });
-  }
 
 
 }

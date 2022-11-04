@@ -64,6 +64,7 @@ import {SliderModule} from 'primeng/slider';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {ToastModule} from 'primeng/toast';
 import {ProgressBarModule} from 'primeng/progressbar';
+import { InvestirbuttonComponent } from './pages/investirbutton/investirbutton.component';
 
 
 @NgModule({
@@ -136,7 +137,8 @@ import {ProgressBarModule} from 'primeng/progressbar';
   UserProfileComponent,
   TablesComponent,
   IconsComponent,
-  HomeComponent],
+  HomeComponent,
+  InvestirbuttonComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
